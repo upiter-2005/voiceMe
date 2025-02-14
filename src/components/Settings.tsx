@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, ScrollView, TouchableOpacity, Image, StyleSheet, Platform } from 'react-native'
-import { Link, Redirect, router } from "expo-router"
+import { View, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { router } from "expo-router"
 import settings from '@/src/assets/images/settings.webp'
 import vip from '@/src/assets/images/vip.webp'
 

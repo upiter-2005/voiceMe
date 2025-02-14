@@ -2,8 +2,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, ImageBackground, Butto
 import React, { useEffect, useState } from 'react'
 import { Dimensions, StatusBar } from 'react-native'
 
-import settings from '@/src/assets/images/settings.webp'
-import vip from '@/src/assets/images/vip.webp'
+
 import pauseRecord from '@/src/assets/images/pauseRecord.png'
 import importIco from '@/src/assets/images/Import.webp'
 import record from '@/src/assets/images/tap.webp'

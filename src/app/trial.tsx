@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import bgImg from "@/src/assets/images/Page21.webp"
 import subscribe from "@/src/assets/images/Subscribe.webp"
 import freeForYou from "@/src/assets/images/FreeForYou.webp"
@@ -8,6 +8,8 @@ import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground } from
 import { Link, Redirect, router } from "expo-router"
 import {StyleSheet, Dimensions} from 'react-native'
 import GoogleAuth from '../components/GoogleAuth'
+import userStore from '../store/userStore'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const {width, height} = Dimensions.get('window')
 
@@ -18,7 +20,26 @@ const buttonImageHeight = 166
 const buttonImageWidth = 313
 
 const Trial = () => {
-  
+  const {changePlan, setRegisteredTime} = userStore()
+
+  const getFreePlan = async() => {
+    const now = Date.now()
+    const hasPlan = await AsyncStorage.setItem("@hasPlan", JSON.stringify({planType: 'trial', planStart: now}))
+    changePlan('trial')
+    setRegisteredTime(now)
+    router.replace('/record')
+  }
+
+  const checkFreePlan = async() => {
+    const hasPlan = await AsyncStorage.getItem("@hasPlan")
+    if(!hasPlan) return
+    router.replace('/record')
+  }
+
+useEffect(()=>{
+  checkFreePlan()
+}, [])
+
   return (
       
     <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}>
@@ -48,7 +69,7 @@ const Trial = () => {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={()=>{router.push('/record')}}>
+            <TouchableOpacity onPress={getFreePlan}>
               <Image
                 source={freeForYou}
                 resizeMode='contain'

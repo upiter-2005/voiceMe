@@ -6,8 +6,13 @@ import king from "@/src/assets/images/King.webp"
 import master from "@/src/assets/images/Master.webp"
 import pro from "@/src/assets/images/Pro.webp"
 import {Image, View, TouchableOpacity} from 'react-native'
+import { PlanButton } from '@/src/components/PlanButton'
+
 
 export default function Subscribe () {
+
+
+
     return (
       
           <ImageBackground source={bgImg} resizeMode="cover" style={styles.image}>
@@ -17,29 +22,12 @@ export default function Subscribe () {
                 <Text style={styles.title}>Choose your tariff</Text>
                 <View style={styles.tariffBox}>
 
-                  <TouchableOpacity onPress={()=>{}}>
-                    <Image
-                      source={king}
-                      resizeMode='contain'
-                      style={{width:313, height:123}}
-                    />
-                  </TouchableOpacity>
+                <PlanButton name="king" img={king} />
+                <PlanButton name="master" img={master} />
+                <PlanButton name="pro" img={pro} />
+                 
 
-                  <TouchableOpacity onPress={()=>{}}>
-                    <Image
-                      source={master}
-                      resizeMode='contain'
-                      style={{width:313, height:123}}
-                    />
-                  </TouchableOpacity>
-
-                  <TouchableOpacity onPress={()=>{}}>
-                    <Image
-                      source={pro}
-                      resizeMode='contain'
-                      style={{width:313, height:123}}
-                    />
-                  </TouchableOpacity>
+                 
 
                 </View>
             </ScrollView>

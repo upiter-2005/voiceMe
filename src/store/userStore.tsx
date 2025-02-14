@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type Plan = 'trial' | 'pro' | 'master' | 'king' | null
+export type Plan = 'trial' | 'pro' | 'master' | 'king' | null
 
 interface userI {
     id: string | null
@@ -12,7 +12,8 @@ interface userI {
     createUser: (user: any) => void,
     clearUser: () => void,
     toggleVisit: () => void,   
-    changePlan: (value: Plan) => void   
+    changePlan: (value: Plan) => void,
+    setRegisteredTime: (value: number) => void   
 }
 
 const userStore = create<userI>((set, get) => ({
@@ -47,7 +48,11 @@ const userStore = create<userI>((set, get) => ({
             plan: value
         })
     },
-
+    setRegisteredTime: (value) => {
+        set({
+            registeredTime: value
+        })
+    },
 
 }));
 
